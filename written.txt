@@ -1,0 +1,134 @@
+EXCERSIES
+1A
+
+Standard Manipulator Equations.
+(robot dynamics)
+M(q)q'' + C(q,q') + g(q) = u   
+Desired trajectory 
+qdes(t)........ twice diffrentiable
+therefore, qdes'(t) and qdes''(t) exists 
+initial given conditions q(0)=qdes(0) and q'(0)=q'des(0)
+
+Control input....... u(t) = M(q)q''des + C(q,q')q' + g(q).....inverse dynamics controller
+inverse dynamics controller is a non linear feedback controller used in robotics to calculate the specific forces or torques required to make a robots joints follow a desired trajectory.
+
+substituing the required contorller input in the robot dynamics...
+M(q)q'' + C(q,q')q' + g(q) = M(q)qdes'' + C(q,q')q' + g(q)
+
+q''=qdes''
+integrating 
+q'(t) = qdes'(t) + c1
+since,q'(0) = qdes'(0)
+c1=0
+intregating 
+q(t) = qdes(t) + c2
+since,q(0)=qdes(0)
+c2=0
+
+therefore, q(t) = qdes(t) for all t >=0
+hence,yes for any twice-diffrentiable desired trajectory qdes(t),there exists a control input.
+
+1B
+
+The dynamics of the equation is given by mq''=u.
+where u is the controlled force...
+
+and the state...x=[ q
+                    q' ]
+
+intial state(1)
+x=[ 2.5
+    0.5 ]
+
+by the straight line trajectory equation 
+q' = [(0-0.5)/(0-2)](q-2)+0.5
+q'=0.25q
+
+q''=  0.25q'
+
+u(t)=0.25mq'(t)
+since initially q'>0,
+we get, u>0
+therfore a possitive control means q''>0
+hence the velocity increases and the cart moves forward 
+therefore it is not possibel to reach origin along the blu estraight line 
+
+ii
+now,x=[  2 
+        -0.5 ]
+
+the straight line equation 
+
+q' = [0-(-0.5)/0-2](q-2) - 0.5
+q'=-0.25q 
+
+q''=-0.25q'
+
+since q'<0 
+making the control input possitive hence the red trajectory eill reach the origin 
+
+1C
+
+the state is defined as x=[q
+                           q']
+                
+the state space dynamics are defined as 
+
+x'=f(x,t)=[            q'
+            f1(q,q',t) + f2(q,q',t)u  ]\
+
+now we want 
+x(t)=xdes(t)
+
+desired trajectory x=[qdes
+                      Vdes]  where, vdes=q'des
+
+
+first state equation from the dynamics 
+q'=v
+
+trajectory gives, q'des=d(vdes)/dt
+
+v'= f1(q,q',t) + f2(q,q',t)u
+for the desired path 
+v'des= f1(qdes,q'des,t) + f2(qdes,q'des,t)u
+
+u = f2inverse(v'des - f1 )
+
+so a control only exist if 
+f2 is invertivle 
+and vdes = q'des 
+since a desried xdes dosent satisfies always that vdes=q'des
+therefore for any twice diffrentiable trajectory xdes(t) it is not alwyas possible as control u(t) dosent effect the condtion q'des=vdes 
+
+(for any desired trajectory to be possible vdes=q'des)
+
+********************************************************************************************************************
+
+1.3
+
+see here we are basically consodering a variation of the double pendulum where 
+we are not actuating both the joints instead we are just puttign force on m2 in 
+the form of force such that,
+
+u=[u1,u2]t
+
+therefore by the guven equation 
+M(q)q'' + C(q,q')q' = Tg(q) + Bu,
+since, the matrix is changed (B) in the fucntion of q...
+
+B(q)=[l1c1+l2c1+2    l1s1 + l2s1+2
+         l2c1+2        l2s1+2     ]
+
+for fully actuating robotic control,
+    det(B)!=0
+
+therefore,
+det(B)=(l1)(l2)sin(q2)
+l1>0 and l2>0
+and sinq2= 0 if q2=0,pi,2pi....
+now fir this condtions the joints be straight or the links fold back making a straight line.
+and then after this the links then the the control input `
+if we set the limits of q1 and q2 then we can make it fully actuated.
+
+
